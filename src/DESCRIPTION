@@ -1,0 +1,13 @@
+Package: rpgm
+Type: Package
+Title: Fast Simulation of Normal Random Variables
+Version: 0.1.3
+Date: 2017-02-22
+Author: Nicolas Baradel
+Maintainer: Nicolas Baradel - PGM Solutions <nicolas.baradel@pgm-solutions.com>
+Description: Ziggurat method in order to simulate normal random variables approximately four times faster than the usual rnorm(), reference : MARSAGLIA, George, TSANG, Wai Wan, and al. (2000) <DOI:10.18637/jss.v005.i08>.
+License: GPL-3
+NeedsCompilation: yes
+Packaged: 2017-02-28 20:51:57 UTC; Home
+Repository: CRAN
+Date/Publication: 2017-02-28 23:41:06

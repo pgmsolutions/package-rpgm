@@ -1,0 +1,15 @@
+796a0f7791bbb9b76e86792e2ed5e0b2 *DESCRIPTION
+1844fbc172d9eb185f4068121eb23826 *NAMESPACE
+10fffaed093655c9fa2eb76732b725a1 *R/jarquebera.R
+25397726821556735c55a6ff8425deb7 *R/kurtosis.R
+41bceb8c1de5f5080e6b3abc118659f8 *R/onLoad.R
+2227910f0c816d08314e232163a4d230 *R/rpgm.rnorm.R
+f39579a14d46fee930a243828f1d5cc9 *R/skewness.R
+43362837a9d8a0e23e73ee4f64659ba4 *man/jarquebera.Rd
+2eefcbb9e0283a83decfe3f82928e82b *man/kurtosis.Rd
+2fbf63158ab149eb94bec22de4a7cd29 *man/rpgm-package.Rd
+2ab2857958a025eddc3529b0578b0b24 *man/rpgm.rnorm.Rd
+f43846375b3be607b7a1f0eb533133c4 *man/skewness.Rd
+b5cf36ca019c73b6b9ce3861c73f9b2a *src/jarquebera.c
+7b3cf28986e510a76d83aba5b9333c06 *src/rnorm_rpgm.c
+f405020461666bfa9e52db03f526a30c *src/rpgm_init.c
