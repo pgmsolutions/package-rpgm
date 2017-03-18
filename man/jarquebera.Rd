@@ -1,9 +1,8 @@
 \name{jarquebera}
 \alias{jarquebera}
-\alias{C_jarquebera}
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{
-	The Jarque-Bera test
+	The Jarque-Bera Test for Normality
 }
 \description{
 	This test, based on the \code{skewness} and the \code{kurtosis} of the vector, computes the p-value associated to the normality of the distribution.

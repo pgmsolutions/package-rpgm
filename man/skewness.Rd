@@ -1,9 +1,8 @@
 \name{skewness}
 \alias{skewness}
-\alias{C_skewness}
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{
-	The skewness of a vector of variables
+	The Skewness of a Vector of Random Variables
 }
 \description{
 	The function computes the centred and reduced moment of order 3 of the vector \code{x}.

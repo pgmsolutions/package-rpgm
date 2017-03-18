@@ -1,14 +1,14 @@
-\name{rpgm.rnorm}
-\alias{rpgm.rnorm}
+\name{rpgm.rlnorm}
+\alias{rpgm.rlnorm}
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{
-	Fast Simulation of Normal Random Variables
+	Fast Simulation of Log-Normal Random Variables
 }
 \description{
-	The function rpgm.rnorm uses the Ziggurat algorithm with a 128-regions table, in order to simulate normal random variables faster than \code{rnorm}.
+	The function rpgm.rlnorm uses \code{rpgm.rnorm} in order to simulate log-normal random variables faster than \code{rlnorm}.
 }
 \usage{
-rpgm.rnorm(n, mean = 0, sd = 1)
+rpgm.rlnorm(n, mean = 0, sd = 1)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
@@ -16,17 +16,17 @@ rpgm.rnorm(n, mean = 0, sd = 1)
 	integer, number of simulations.
 }
   \item{mean}{
-	double, the mean (or the vector of means).
+	double, the mean (or the vector of means) of the logarithm of the log-normal variable.
 }
   \item{sd}{
-	double, the standard deviation (or the vector of standard deviations).
+	double, the standard deviation (or the vector of standard deviations) of the logarithm of the log-normal variable.
 }
 }
 \details{
 If \code{mean} or \code{sd} are not specified they assume the default values of 0 and 1, respectively.
 }
 \value{
-A vector of i.i.d. normal random variables.
+A vector of i.i.d. log-normal random variables.
 }
 \references{
 https://en.wikipedia.org/wiki/Ziggurat_algorithm
@@ -35,7 +35,7 @@ https://en.wikipedia.org/wiki/Ziggurat_algorithm
 Nicolas Baradel - PGM Solutions
 }
 \note{
-For a big number of simulations, it is in general between three and four times faster than the usual \code{rnorm}. For one simulution, it is around one half faster.
+For a big number of simulations, it is in general two times faster than the usual \code{rnorm}.
 }
 
 %% ~Make other sections like Warning with \section{Warning }{....} ~
@@ -44,7 +44,7 @@ For a big number of simulations, it is in general between three and four times f
 \href{http://pgm-solutions.com/packages}{http://pgm-solutions.com/packages}
 }
 \examples{
-rpgm.rnorm(5)
+rpgm.rlnorm(5)
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.

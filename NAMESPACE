@@ -1,2 +1,3 @@
 exportPattern("^[[:alpha:]]+")
 useDynLib(rpgm, .registration=TRUE)
+importFrom("stats", "nlm")

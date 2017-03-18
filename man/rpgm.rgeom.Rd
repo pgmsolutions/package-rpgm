@@ -1,39 +1,38 @@
-\name{kurtosis}
-\alias{kurtosis}
+\name{rpgm.rgeom}
+\alias{rpgm.rgeom}
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{
-	The Kurtosis of a Vector of Random Variables
+	Fast Simulation of Geometric Random Variables
 }
 \description{
-	The function computes the centred and reduced moment of order 4 of the vector \code{x}.
+	The function rpgm.geom uses \code{rpgm.exp} in order to simulate geometric random variables faster than \code{rgeom}.
 }
 \usage{
-kurtosis(x)
+rpgm.rgeom(n, prob)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
-  \item{x}{
-	numeric, vector of independent and identical random variables
+  \item{n}{
+	integer, number of simulations.
+}
+  \item{prob}{
+	double, probability.
 }
 }
 \details{
-The function returns the value of
-	
-	\deqn{\frac{1}{n}\sum_{k=1}^{n}[(x_{i} - \mu_{x})/\sigma_{x}]^4}{(1/n)sum_{k=1}^n[(x_i-mu_x)/sigma_x]^4}
-		
-
+The argument \code{prob} must be in ]0, 1], else, NA are produced.
 }
 \value{
-A vector of i.i.d. normal random variable.
+A vector of i.i.d. geometric random variables.
 }
 \references{
-https://en.wikipedia.org/wiki/Kurtosis
+https://en.wikipedia.org/wiki/Ziggurat_algorithm
 }
 \author{
 Nicolas Baradel - PGM Solutions
 }
 \note{
-For the skewness, see the \code{skewness} function.
+For a big number of simulations, it is in general nine times faster than the usual \code{rgeom}.
 }
 
 %% ~Make other sections like Warning with \section{Warning }{....} ~
@@ -42,7 +41,7 @@ For the skewness, see the \code{skewness} function.
 \href{http://pgm-solutions.com/packages}{http://pgm-solutions.com/packages}
 }
 \examples{
-kurtosis(rpgm.rnorm(10^5))
+rpgm.rgeom(5, 0.5)
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.
