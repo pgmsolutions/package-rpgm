@@ -20,7 +20,7 @@ rcantor(n)
 The Cantor set is uncountable with Lebesgue's measure 0 which leads to a singular probability distribution. The corresponding cumulative probability distribution is the Devil's staircase. The cantor set can be viewed as the number of the form sum(j=1, +Inf) c_j / 3^j with c_j in \{0, 2\} and the corresping probability distribution simulates uniformely the c_j (here, to j=32).
 }
 \value{
-A vector of i.i.d. Bernoulli random variables.
+A vector of i.i.d. Cantor random variables.
 }
 \references{
 https://en.wikipedia.org/wiki/Cantor_distribution

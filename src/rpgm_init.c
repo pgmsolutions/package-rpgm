@@ -32,6 +32,9 @@ SEXP rb(SEXP n, SEXP p);
 SEXP rc(SEXP n);
 SEXP rgpd(SEXP n, SEXP ksi, SEXP mu, SEXP sigma);
 
+SEXP rpoisson(SEXP n, SEXP lambda, SEXP T, SEXP drop);
+SEXP evalpoisson(SEXP P, SEXP t);
+
 R_CallMethodDef callMethods[]  = {
   {".C_skewness", (DL_FUNC) &skewness, 1},
   {".C_kurtosis", (DL_FUNC) &kurtosis, 1},
@@ -59,6 +62,10 @@ R_CallMethodDef callMethods[]  = {
   {".C_rb", (DL_FUNC) &rb, 2},
   {".C_rc", (DL_FUNC) &rc, 1},
   {".C_rgpd", (DL_FUNC) &rgpd, 4},
+  
+  {".C_rpoisson", (DL_FUNC) &rpoisson, 4},
+  {".C_evalpoisson", (DL_FUNC) &evalpoisson, 2},
+  
   {NULL, NULL, 0}
 };
 
