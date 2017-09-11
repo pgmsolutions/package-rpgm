@@ -35,7 +35,7 @@ https://en.wikipedia.org/wiki/Ziggurat_algorithm
 Nicolas Baradel - PGM Solutions
 }
 \note{
-For a big number of simulations, it is in general between three and four times faster than the usual \code{rnorm}. For one simulution, it is around one half faster.
+For a big number of simulations, it is approximately four times faster than the usual \code{rnorm}. For one simulution, it is around one half faster.
 }
 
 %% ~Make other sections like Warning with \section{Warning }{....} ~

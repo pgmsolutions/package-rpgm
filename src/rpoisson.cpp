@@ -2,7 +2,8 @@
 #include <Rinternals.h>
 #include <Rmath.h>
 
-
+extern "C" 
+{
 // [[register]]
 SEXP rpoisson(SEXP n, SEXP lambda, SEXP T, SEXP drop)
 {
@@ -56,7 +57,11 @@ SEXP rpoisson(SEXP n, SEXP lambda, SEXP T, SEXP drop)
 	}
 	return(P);
 }
+}
 
+extern "C" 
+{
+// [[register]]
 SEXP evalpoisson(SEXP P, SEXP t)//doit gérer le cas vecteur, renvoie une matrice dans ce cas
 {
 	SEXP evalP;
@@ -106,4 +111,5 @@ SEXP evalpoisson(SEXP P, SEXP t)//doit gérer le cas vecteur, renvoie une matric
 	UNPROTECT(1);
 	
 	return(evalP);
+}
 }

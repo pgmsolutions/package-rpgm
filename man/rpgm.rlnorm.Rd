@@ -35,7 +35,7 @@ https://en.wikipedia.org/wiki/Ziggurat_algorithm
 Nicolas Baradel - PGM Solutions
 }
 \note{
-For a big number of simulations, it is in general two times faster than the usual \code{rnorm}.
+For a big number of simulations, it is in general two times faster than the usual \code{rlnorm}.
 }
 
 %% ~Make other sections like Warning with \section{Warning }{....} ~

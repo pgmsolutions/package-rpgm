@@ -59,6 +59,8 @@ void rcantor_rpgm(int N, double * vector)
 }
 
 
+extern "C" 
+{
 // [[register]]
 SEXP rc(SEXP n)
 {
@@ -81,4 +83,5 @@ SEXP rc(SEXP n)
 	UNPROTECT(1);
 
 	return vector_sexp;
+}
 }

@@ -3,6 +3,9 @@
 #include <Rinternals.h>
 #include "rnorm_rpgm.h"
 
+extern "C" 
+{
+// [[register]]
 SEXP rvasicek(SEXP n, SEXP m, SEXP X0, SEXP mu, SEXP a, SEXP sd, SEXP T, SEXP drop)
 {
 	int i,j;
@@ -58,7 +61,11 @@ SEXP rvasicek(SEXP n, SEXP m, SEXP X0, SEXP mu, SEXP a, SEXP sd, SEXP T, SEXP dr
 	UNPROTECT(1);
 	return(X);
 }
+}
 
+extern "C" 
+{
+// [[register]]
 SEXP dvasicek(SEXP X, SEXP mu, SEXP a, SEXP sd, SEXP T, SEXP log)
 {
 	int j;
@@ -88,7 +95,11 @@ SEXP dvasicek(SEXP X, SEXP mu, SEXP a, SEXP sd, SEXP T, SEXP log)
 	UNPROTECT(1);
 	return(f);
 }
+}
 
+extern "C" 
+{
+// [[register]]
 SEXP lvasicek(SEXP X, SEXP mu, SEXP a, SEXP sd, SEXP T)
 {
 	int j;
@@ -118,4 +129,5 @@ SEXP lvasicek(SEXP X, SEXP mu, SEXP a, SEXP sd, SEXP T)
 	
 	UNPROTECT(1);
 	return(f);
+}
 }

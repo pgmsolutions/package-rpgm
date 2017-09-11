@@ -32,7 +32,7 @@ https://en.wikipedia.org/wiki/Ziggurat_algorithm
 Nicolas Baradel - PGM Solutions
 }
 \note{
-For a big number of simulations, it is in general nine times faster than the usual \code{rgeom}.
+For a big number of simulations, it is in general ten times faster than the usual \code{rgeom}.
 }
 
 %% ~Make other sections like Warning with \section{Warning }{....} ~

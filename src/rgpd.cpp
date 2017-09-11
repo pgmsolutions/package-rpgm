@@ -12,6 +12,8 @@ void rgpd_rpgm(int N, double * vector, double ksi, double mu, double sigma)
 }
 
 
+extern "C" 
+{
 // [[register]]
 SEXP rgpd(SEXP n, SEXP xi, SEXP mu, SEXP sigma)
 {
@@ -48,4 +50,5 @@ SEXP rgpd(SEXP n, SEXP xi, SEXP mu, SEXP sigma)
 	UNPROTECT(1);
 
 	return vector_sexp;
+}
 }

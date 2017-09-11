@@ -32,7 +32,7 @@ https://en.wikipedia.org/wiki/Bernoulli_distribution
 Nicolas Baradel - PGM Solutions
 }
 \note{
-For a big number of simulations, it is in general thirteenth times faster than the usual \code{rbinom(n, 1, prob)}.
+For a big number of simulations, it is approximately eleven times faster than the usual \code{rbinom(n, 1, prob)}.
 }
 
 %% ~Make other sections like Warning with \section{Warning }{....} ~

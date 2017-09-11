@@ -15,19 +15,19 @@ void mean_and_var(double*x, int n, double* m, double* v)
 	*v = m2/n_ - (*m)*(*m);
 }
 
+extern "C" 
+{
 // [[register]]
 SEXP skewness(SEXP x)
 {
 	double *vector = REAL(x);
-	double *m = malloc(sizeof(double));
-	double *v = malloc(sizeof(double));
+	double *m = new double;
+	double *v = new double;
 	int n = length(x);
 	
 	*m = 0.;
 	mean_and_var(vector, n, m, v);
-		
-//	Rprintf("x[0] : %f, n : %i, m: %f, v: %f\n", vector[0], n, *m, *v);
-	
+			
 	double s3 = *v;
 	s3 *= sqrt(*v);
 
@@ -48,20 +48,21 @@ SEXP skewness(SEXP x)
 
 	return skewness_sexp;	
 }
+}
 
+extern "C" 
+{
 // [[register]]
 SEXP kurtosis(SEXP x)
 {
 	double *vector = REAL(x);
-	double *m = malloc(sizeof(double));
-	double *v = malloc(sizeof(double));
+	double *m = new double;
+	double *v = new double;
 	int n = length(x);
 	
 	*m = 0.;
 	mean_and_var(vector, n, m, v);
-		
-//	Rprintf("x[0] : %f, n : %i, m: %f, v: %f\n", vector[0], n, *m, *v);
-	
+			
 	double s4 = *v;
 	s4 *= *v;
 	
@@ -88,8 +89,10 @@ SEXP kurtosis(SEXP x)
 
 	return kurtosis_sexp;	
 }
+}
 
-
+extern "C" 
+{
 // [[register]]
 SEXP jarquebera(SEXP x)
 {
@@ -107,4 +110,5 @@ SEXP jarquebera(SEXP x)
 	UNPROTECT(1);
 
 	return jb;	
+}
 }

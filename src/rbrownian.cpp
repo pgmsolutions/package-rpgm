@@ -4,6 +4,8 @@
 #include "rnorm_rpgm.h"
 
 // [[register]]
+extern "C" 
+{
 SEXP rbrownian(SEXP n, SEXP m, SEXP mu, SEXP sd, SEXP T, SEXP B0, SEXP drop)
 {
 	int i,j;
@@ -52,4 +54,5 @@ SEXP rbrownian(SEXP n, SEXP m, SEXP mu, SEXP sd, SEXP T, SEXP B0, SEXP drop)
 	
 	UNPROTECT(1);
 	return(B);
+}
 }
