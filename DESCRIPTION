@@ -2,11 +2,12 @@ Package: rpgm
 Type: Package
 Title: Fast Simulation of Normal/Exponential Random Variables and
         Stochastic Differential Equations / Poisson Processes
-Version: 1.0.1
-Date: 2017-07-05
+Version: 1.0.2
+Date: 2017-11-09
 Author: Nicolas Baradel
 Maintainer: Nicolas Baradel - PGM Solutions <nicolas.baradel@pgm-solutions.com>
 Description: Fast simulation of some random variables than the usual native functions, including rnorm() and rexp(), using Ziggurat method, reference: MARSAGLIA, George, TSANG, Wai Wan, and al. (2000) <doi:10.18637/jss.v005.i08>, and fast simulation of stochastic differential equations / Poisson processes.
 License: GPL-3
 URL: https://pgm-solutions.com/packages
 NeedsCompilation: yes
+SystemRequirements: C++11
