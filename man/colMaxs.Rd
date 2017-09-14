@@ -9,7 +9,7 @@
 	The Maximum or Minimum of each Column or each Row of a Matrix.
 }
 \description{
-	Form row and column maxs and mins for numeric arrays (or data frames).
+	For row and column maxs and mins for numeric arrays (or data frames).
 }
 \usage{
 colMaxs(x)
