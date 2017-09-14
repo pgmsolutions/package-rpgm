@@ -1,5 +1,6 @@
 rpgm.set.seed <-
-function(n)
+function(seed)
 {
-	.Call(.C_mt_set_seed, as.integer(n))
+	cat("Not yet fully implemented\n")
+	#.Call(.C_mt_set_seed, as.integer(seed))
 }
