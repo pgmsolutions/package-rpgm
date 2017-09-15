@@ -172,6 +172,20 @@ SEXP rn(SEXP n, SEXP mu, SEXP sd, SEXP nthreads)
 		NTHREADS = (int) *REAL(nthreads);
 	else
 		NTHREADS = 1;
+	
+	if(NTHREADS != 1)
+	{
+		if(NTHREADS < 1)
+		{
+			warning("Negative number of threads: nthreads = %d, one is used (no multi-core).\n", NTHREADS);
+			NTHREADS = 1;
+		}
+		else if (NTHREADS > omp_get_max_threads())
+		{
+			warning("Number of threads: nthreads = %d is greater than the maximum: maxthreads() = %d, %d are used.\n", NTHREADS, omp_get_max_threads(), omp_get_max_threads());
+			NTHREADS = omp_get_max_threads();
+		}
+	}
 
 	SEXP vector_sexp;
 	double* vector;
