@@ -8,7 +8,7 @@
 SEXP skewness(SEXP x);
 SEXP kurtosis(SEXP x);
 SEXP jarquebera(SEXP x);
-SEXP rn(SEXP n, SEXP mu, SEXP sd);
+SEXP rn(SEXP n, SEXP mu, SEXP sd, SEXP nthreads);
 SEXP rln(SEXP n, SEXP mu, SEXP sd);
 SEXP rbrownian(SEXP n, SEXP m, SEXP mu, SEXP sd, SEXP T, SEXP B0, SEXP drop);
 
@@ -36,12 +36,13 @@ SEXP rpoisson(SEXP n, SEXP lambda, SEXP T, SEXP drop);
 SEXP evalpoisson(SEXP P, SEXP t);
 
 SEXP mt_set_seed(SEXP);
+SEXP getmaxthreads();
 
 R_CallMethodDef callMethods[]  = {
   {".C_skewness", (DL_FUNC) &skewness, 1},
   {".C_kurtosis", (DL_FUNC) &kurtosis, 1},
   {".C_jarquebera", (DL_FUNC) &jarquebera, 1},
-  {".C_rn", (DL_FUNC) &rn, 3},
+  {".C_rn", (DL_FUNC) &rn, 4},
   {".C_rln", (DL_FUNC) &rln, 3},
   {".C_rtt", (DL_FUNC) &rtt, 2},
   {".C_rbrownian", (DL_FUNC) &rbrownian, 7},
@@ -69,6 +70,7 @@ R_CallMethodDef callMethods[]  = {
   {".C_evalpoisson", (DL_FUNC) &evalpoisson, 2},
   
   {".C_mt_set_seed", (DL_FUNC) &mt_set_seed, 1},
+  {".C_getmaxthreads", (DL_FUNC) &getmaxthreads, 0},
   
   {NULL, NULL, 0}
 };

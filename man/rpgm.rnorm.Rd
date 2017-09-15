@@ -8,7 +8,7 @@
 	The function rpgm.rnorm uses the Ziggurat algorithm with a 128-regions table, in order to simulate normal random variables faster than \code{rnorm}.
 }
 \usage{
-rpgm.rnorm(n, mean = 0, sd = 1)
+rpgm.rnorm(n, mean = 0, sd = 1, nthreads = 1L)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
@@ -21,9 +21,12 @@ rpgm.rnorm(n, mean = 0, sd = 1)
   \item{sd}{
 	double, the standard deviation (or the vector of standard deviations).
 }
+  \item{nthreads}{
+	integer, the number of threads to use for parallelism.
+}
 }
 \details{
-If \code{mean} or \code{sd} are not specified they assume the default values of 0 and 1, respectively.
+If \code{mean} or \code{sd} are not specified they assume the default values of 0 and 1, respectively. By default the number of threads is 1 so there is no multi-core.
 }
 \value{
 A vector of i.i.d. normal random variables.
@@ -35,7 +38,7 @@ https://en.wikipedia.org/wiki/Ziggurat_algorithm
 Nicolas Baradel - PGM Solutions
 }
 \note{
-For a big number of simulations, it is approximately four times faster than the usual \code{rnorm}. For one simulution, it is around one half faster.
+For a big number of simulations, with nthreads = 1, it is approximately four times faster than the usual \code{rnorm}. For one simulution, it is around one half faster.
 }
 
 %% ~Make other sections like Warning with \section{Warning }{....} ~
@@ -45,6 +48,7 @@ For a big number of simulations, it is approximately four times faster than the 
 }
 \examples{
 rpgm.rnorm(5)
+rpgm.rnorm(5, nthreads = maxthreads())
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.

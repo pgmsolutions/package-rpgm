@@ -8,7 +8,6 @@
 
 #define INV_MAX_MT 2.3283064365386963e-10
 
-unsigned int mt_rand();
 extern "C" 
 {
 SEXP mt_set_seed(SEXP);
