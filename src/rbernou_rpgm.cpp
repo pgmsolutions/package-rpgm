@@ -1,9 +1,6 @@
-#include <R.h>
-#include <Rinternals.h>
-#include <Rmath.h>
-#include "rnorm_rpgm.h"
-
+#include "rbernou_rpgm.h"
 #define Max_MT 4294967296.
+
 
 void rbernou0_rpgm(int N, int * vector)
 {	

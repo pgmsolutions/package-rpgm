@@ -1,7 +1,4 @@
-#include <R.h>
-#include <Rinternals.h>
-#include <Rmath.h>
-#include "rnorm_rpgm.h"
+#include "rcantor_rpgm.h"
 
 void rcantor_rpgm(int N, double * vector)
 {
