@@ -1,10 +1,6 @@
 #ifndef RPGM_RBERNOU
 #define RPGM_RBERNOU
 
-#include <R.h>
-#include <Rinternals.h>
-#include <Rmath.h>
-#include <random>
 #include "mt19337.h"
 
 extern std::random_device rd;

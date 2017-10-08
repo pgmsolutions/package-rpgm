@@ -1,6 +1,3 @@
-#include <R.h>
-#include <Rinternals.h>
-#include <Rmath.h>
 #include "rexp_rpgm.h"
 
 void rgpd_rpgm(int N, double * vector, double ksi, double mu, double sigma)

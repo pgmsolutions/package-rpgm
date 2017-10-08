@@ -1,5 +1,5 @@
-#include <R.h> //Rprintf, ...
-#include <Rmath.h> //rnorm, ...
+#include <R.h>
+#include <Rmath.h>
 #include <Rinternals.h>
 
 //Pour Real

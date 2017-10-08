@@ -1,8 +1,3 @@
-#include <R.h>
-#include <Rinternals.h>
-#include <Rmath.h>
-#include <ctime>
-
 #include "mt19337.h"
 
 //initilize default mt generator

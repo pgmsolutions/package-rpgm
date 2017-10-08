@@ -1,6 +1,6 @@
 #include <R.h>
-#include <Rinternals.h>
 #include <Rmath.h>
+#include <Rinternals.h>
 
 void mean_and_var(double*x, int n, double* m, double* v)
 {

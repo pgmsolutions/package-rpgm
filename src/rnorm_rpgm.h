@@ -1,11 +1,10 @@
 #ifndef RPGM_RNORM
 #define RPGM_RNORM
 
-#include <R.h>
-#include <Rinternals.h>
-#include <Rmath.h>
-#include <random>
+#ifdef _OPENMP
 #include <omp.h>
+#endif
+
 #include "mt19337.h"
 
 extern std::random_device rd;

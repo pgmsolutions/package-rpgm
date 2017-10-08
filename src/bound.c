@@ -1,6 +1,6 @@
 #include <R.h>
-#include <Rinternals.h>
 #include <Rmath.h>
+#include <Rinternals.h>
 
 SEXP lbound(SEXP x, SEXP m)
 {

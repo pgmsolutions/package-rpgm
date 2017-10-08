@@ -2,10 +2,6 @@
 #define RPGM_RCANTOR
 
 
-#include <R.h>
-#include <Rinternals.h>
-#include <Rmath.h>
-#include <random>
 #include "mt19337.h"
 
 extern std::random_device rd;

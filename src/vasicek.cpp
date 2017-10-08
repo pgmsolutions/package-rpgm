@@ -1,6 +1,3 @@
-#include <R.h> //Rprintf, ...
-#include <Rmath.h> //rnorm, ...
-#include <Rinternals.h>
 #include "rnorm_rpgm.h"
 
 extern "C" 

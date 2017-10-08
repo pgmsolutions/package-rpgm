@@ -175,6 +175,7 @@ SEXP rn(SEXP n, SEXP mu, SEXP sd, SEXP nthreads)
 	
 	if(NTHREADS != 1)
 	{
+#ifdef _OPENMP
 		if(NTHREADS < 1)
 		{
 			warning("Negative number of threads: nthreads = %d, one is used (no multi-core).\n", NTHREADS);
@@ -185,6 +186,10 @@ SEXP rn(SEXP n, SEXP mu, SEXP sd, SEXP nthreads)
 			warning("Number of threads: nthreads = %d is greater than the maximum: maxthreads() = %d, %d are used.\n", NTHREADS, omp_get_max_threads(), omp_get_max_threads());
 			NTHREADS = omp_get_max_threads();
 		}
+#else
+			warning("Number of threads: nthreads = %d is greater than the maximum: maxthreads() = %d, %d are used.\n", NTHREADS, 1, 1);
+			NTHREADS = 1;
+#endif
 	}
 
 	SEXP vector_sexp;
@@ -223,10 +228,14 @@ SEXP rn(SEXP n, SEXP mu, SEXP sd, SEXP nthreads)
 		}
 		
 		if(mu_ == 0. && sd_ == 1.)
+			#ifdef _OPENMP
 			if(NTHREADS == 1)
 				rnorm_rpgm01(N, vector);
 			else
 				rnorm_rpgm01_mc(N, vector, NTHREADS);
+			#else
+				rnorm_rpgm01(N, vector);
+			#endif
 		else
 			rnorm_rpgm(N, vector, mu_, sd_);
 	}

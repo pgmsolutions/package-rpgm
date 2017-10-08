@@ -1,6 +1,3 @@
-#include <R.h>
-#include <Rinternals.h>
-#include <Rmath.h>
 #include "rnorm_rpgm.h"
 
 // [[register]]
