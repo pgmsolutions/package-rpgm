@@ -237,7 +237,14 @@ SEXP rn(SEXP n, SEXP mu, SEXP sd, SEXP nthreads)
 				rnorm_rpgm01(N, vector);
 			#endif
 		else
-			rnorm_rpgm(N, vector, mu_, sd_);
+			#ifdef _OPENMP
+			if(NTHREADS == 1)
+				rnorm_rpgm(N, vector, mu_, sd_);
+			else
+				rnorm_rpgm_mc(N, vector, mu_, sd_, NTHREADS);
+			#else
+				rnorm_rpgm(N, vector, mu_, sd_);
+			#endif
 	}
 	else
 	{
