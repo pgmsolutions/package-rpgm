@@ -37,8 +37,12 @@ void MT_Threads::Init(int nthreads)
 {
 	if(nthreads > mt_nthreads)
 	{
+		for(int i = 0 ; i != mt_nthreads ; ++i)
+			delete mt_threads[i];
+		delete[] mt_threads;
+
 		mt_threads = new std::mt19937* [nthreads];
-		for(int i = mt_nthreads ; i != nthreads ; ++i)
+		for(int i = 0 ; i != nthreads ; ++i)
 			mt_threads[i] = new std::mt19937(rd());
 		
 		mt_nthreads = nthreads;
