@@ -12,7 +12,6 @@ static double ym[128] = {0.952627209774166, 0.925016009642539, 0.901982254532733
 	//xm[A-1]/xm[A] * 2^32
 static unsigned int xm_ratio_maxMT[127] = {3389068070, 3733320545, 3884603836, 3970279226, 4025548854, 4064200067, 4092764454, 4114741400, 4132177220, 4146348499, 4158093810, 4167986632, 4176432502, 4183726358, 4190088144, 4195684698, 4200645406, 4205071951, 4209045153, 4212630437, 4215881147, 4218841087, 4221546805, 4224028950, 4226313263, 4228421780, 4230373233, 4232183815, 4233867544, 4235436586, 4236901557, 4238271784, 4239555460, 4240759933, 4241891527, 4242956112, 4243958731, 4244903982, 4245796038, 4246638540, 4247434909, 4248188079, 4248900856, 4249575790, 4250214993, 4250820658, 4251394576, 4251938530, 4252454073, 4252942599, 4253405468, 4253843812, 4254258829, 4254651447, 4255022644, 4255373192, 4255703897, 4256015513, 4256308572, 4256583764, 4256841532, 4257082396, 4257306721, 4257514921, 4257707348, 4257884256, 4258045868, 4258192432, 4258324072, 4258440908, 4258543089, 4258630545, 4258703355, 4258761470, 4258804770, 4258833161, 4258846473, 4258844495, 4258826935, 4258793452, 4258743746, 4258677299, 4258593724, 4258492300, 4258372497, 4258233566, 4258074666, 4257894850, 4257693163, 4257468343, 4257219159, 4256944149, 4256641623, 4256309794, 4255946515, 4255549480, 4255116018, 4254643130, 4254127381, 4253564735, 4252950862, 4252280455, 4251547580, 4250745086, 4249865019, 4248897510, 4247831334, 4246652624, 4245344957, 4243888252, 4242257869, 4240422877, 4238344713, 4235973456, 4233244571, 4230071659, 4226337866, 4221879119, 4216458817, 4209720285, 4201099943, 4189645342, 4173601743, 4149307837, 4107483804, 4014245659, 2222445919};
 
-
 //N(0,1) mc
 void rnorm_rpgm01_mc(int N, double * vector, int nthreads)
 {
@@ -25,8 +24,7 @@ void rnorm_rpgm01_mc(int N, double * vector, int nthreads)
 		
 	//tableau de MT
 
-//	if(nthreads > mt_nthreads)
-		mt_threads_init(nthreads);
+	mt_threads.Init(nthreads);
 			
 #pragma omp parallel num_threads(nthreads) firstprivate(j_mc, u0) private(A, u, u1) shared(mt_threads)
 	{
@@ -35,20 +33,21 @@ void rnorm_rpgm01_mc(int N, double * vector, int nthreads)
 		{
 			if(!j_mc)
 			{
-				u0 = (*mt_threads[omp_get_thread_num()])();
+				u0 = (mt_threads[omp_get_thread_num()])();
 				j_mc=3;
 			}
 			else
 			{
 				--j_mc;
 			}
+//			Rprintf("Hey\n - %d - %d", omp_get_thread_num(), i);
 			A =  u0 & 0x7F; //127
 			u0 >>= 0x7; //7
 
 			vector[i] = 0.;
 			while(!vector[i])
 			{
-				u = (*mt_threads[omp_get_thread_num()])();
+				u = (mt_threads[omp_get_thread_num()])();
 				u1 = static_cast<double>(u)*INV_MAX_MT*xm[A];
 				if(A && (u <= xm_ratio_maxMT[A-1]))
 				{
@@ -66,10 +65,6 @@ void rnorm_rpgm01_mc(int N, double * vector, int nthreads)
 			}
 		}
 	}
-	for(int i=0 ; i != nthreads ; ++i)
-		delete mt_threads[i];
-	
-	delete[] mt_threads;
 }
 
 
@@ -82,14 +77,9 @@ void rnorm_rpgm_mc(int N, double * vector, double mu_, double sd_, int nthreads)
 	unsigned int u0=0;
 	
 	double u1;
-		
-	//tableau de MT
-
-	std::mt19937** mt_threads = new std::mt19937*[nthreads];
-
-	for(int i=0 ; i != nthreads ; ++i)
-		mt_threads[i] = new std::mt19937(rd());
 	
+	mt_threads.Init(nthreads);
+			
 #pragma omp parallel num_threads(nthreads) firstprivate(j_mc, u0) private(A, u, u1) shared(mt_threads)
 	{
 #pragma omp for
@@ -97,7 +87,7 @@ void rnorm_rpgm_mc(int N, double * vector, double mu_, double sd_, int nthreads)
 		{
 			if(!j_mc)
 			{
-				u0 = (*mt_threads[omp_get_thread_num()])();
+				u0 = (mt_threads[omp_get_thread_num()])();
 				j_mc=3;
 			}
 			else
@@ -110,7 +100,7 @@ void rnorm_rpgm_mc(int N, double * vector, double mu_, double sd_, int nthreads)
 			vector[i] = 0.;
 			while(!vector[i])
 			{
-				u = (*mt_threads[omp_get_thread_num()])();
+				u = (mt_threads[omp_get_thread_num()])();
 				u1 = static_cast<double>(u)*INV_MAX_MT*xm[A];
 				if(A && (u <= xm_ratio_maxMT[A-1]))
 				{
@@ -128,10 +118,6 @@ void rnorm_rpgm_mc(int N, double * vector, double mu_, double sd_, int nthreads)
 			}
 		}
 	}
-	for(int i=0 ; i != nthreads ; ++i)
-		delete mt_threads[i];
-	
-	delete[] mt_threads;
 }
 
 #endif

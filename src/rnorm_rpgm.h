@@ -19,4 +19,7 @@ extern "C"
 SEXP rn(SEXP n, SEXP mu, SEXP sd, SEXP nthreads);
 }
 
+
+SEXP rbrownian_rpgm(int N, int M, double delta, double mdelta, double sdelta, SEXP & B0, SEXP & drop);
+
 #endif

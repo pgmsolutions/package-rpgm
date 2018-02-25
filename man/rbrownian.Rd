@@ -8,7 +8,7 @@
 	The function \code{rbrownian} is a C-level function which uses the Ziggurat in order to simulate the normal random variables.
 }
 \usage{
-rbrownian(n, m, b0=0, mu=0, sd=1, T=1, drop = TRUE)
+rbrownian(n, m, b0=0, mu=0, sd=1, T=1, drop=TRUE, nthreads=1L)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
@@ -29,8 +29,12 @@ rbrownian(n, m, b0=0, mu=0, sd=1, T=1, drop = TRUE)
 }
   \item{T}{
 	double, the final date on which the brownian motion is simulated.
-}  \item{drop}{
+}
+  \item{drop}{
 	logical, if \code{n = 1} and \code{drop = TRUE} then the function returns the single path of the brownian motion as a vector instead of a matrix.
+}
+  \item{nthreads}{
+	integer, the number of threads to use for parallelism.
 }
 }
 %\details{
@@ -54,6 +58,7 @@ Nicolas Baradel - PGM Solutions
 }
 \examples{
 rbrownian(5, 10)
+#rbrownian(5, 10, nthreads = maxthreads())
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.

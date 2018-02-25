@@ -6,9 +6,11 @@
 #include "rnorm_rpgm.h"
 #include "threads.h"
 
-extern int mt_nthreads;
-extern std::mt19937** mt_threads;
+extern MT_Threads mt_threads;
 
 void rnorm_rpgm01_mc(int N, double * vector, int nthreads);
 void rnorm_rpgm_mc(int N, double * vector, double mu_, double sd_, int nthreads);
+
+SEXP rbrownian_mc(int N, int M, double delta, double mdelta, double sdelta, SEXP & B0, SEXP & drop, int NTHREADS);
+
 #endif

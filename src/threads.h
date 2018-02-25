@@ -7,4 +7,16 @@
 
 extern std::random_device rd;
 
-void mt_threads_init(int nthreads);
+class MT_Threads
+{
+	private:
+	int mt_nthreads;
+	std::mt19937 **mt_threads;
+	
+	public:
+	MT_Threads();
+	~MT_Threads();
+	void Init(int nthreads);
+
+	std::mt19937 & operator[](int i);
+};
